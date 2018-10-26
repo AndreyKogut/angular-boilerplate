@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientInterceptor } from './services';
+import { AppComponent } from './components';
+import { TranslatePipe } from './pipes';
+import { AuthTokenInterceptor } from './services';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TranslatePipe],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: HttpClientInterceptor,
+      useClass: AuthTokenInterceptor,
       multi: true,
     },
   ],

@@ -1,11 +1,10 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { TranslationService } from './translation.service';
 
 @Injectable()
 export class ToastService {
-  constructor(private translateService: TranslationService, @Inject(DOCUMENT) private document) {}
+  constructor(private translateService: TranslationService) {}
 
   showSuccess(key, params?) {
     this.showMessage('showSuccess', key, params);

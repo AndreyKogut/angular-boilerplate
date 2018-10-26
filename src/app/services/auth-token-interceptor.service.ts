@@ -4,9 +4,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable()
-export class HttpClientInterceptor implements HttpInterceptor {
-  private authService: AuthenticationService;
-
+export class AuthTokenInterceptor implements HttpInterceptor {
   constructor(private authService: AuthenticationService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
