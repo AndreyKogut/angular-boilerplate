@@ -11,7 +11,7 @@ export class Translations {
     },
   ];
 
-  static getLocales = (): Object[] => Object.values(Translations.locales);
+  static getLocales = (): any[] => Object.values(Translations.locales);
 
   static getLocalesTokens = (): string[] => Translations.getLocales().map(({ value }) => value);
 }

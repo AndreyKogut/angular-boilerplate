@@ -18,7 +18,9 @@ const setTokens = (tokenName: string, value: string) => {
   sessionStorage.setItem(tokenName, value);
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthenticationService {
   private _accessToken;
   private _refreshToken;
@@ -40,7 +42,7 @@ export class AuthenticationService {
     return this.http.post<LoginResponse>('', userObj).pipe(tap(this.handleUserAuthorization.bind(this)));
   }
 
-  loginWithToken(): Observable<LoginResponse> {
+  refreshAccessToken(): Observable<LoginResponse> {
     return this.http.get<LoginResponse>('').pipe(tap(this.handleUserAuthorization.bind(this)));
   }
 

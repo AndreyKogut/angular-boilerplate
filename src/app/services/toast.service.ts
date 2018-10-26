@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { TranslationService } from './translation.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ToastService {
   constructor(private translateService: TranslationService) {}
 

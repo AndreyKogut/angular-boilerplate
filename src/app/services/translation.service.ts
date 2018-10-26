@@ -15,8 +15,10 @@ import TranslateParam = Translations.TranslateParam;
 
 const locales = TranslationUtils.getLocalesTokens();
 
-@Injectable()
-class TranslationService {
+@Injectable({
+  providedIn: 'root',
+})
+export class TranslationService {
   constructor(private translateService: TranslateService, @Inject(DOCUMENT) private document) {}
 
   getInstantTranslation(key, params?) {
@@ -50,7 +52,7 @@ class TranslationService {
   transformMessage(inputData: MessageInputType, params?): Observable<string> {
     if (inputData) {
       return of(inputData).pipe(
-        switchMap(value => (Array.isArray(value) ? from(flattenDeep(value).filter(val => !!val)) : of(value))),
+        switchMap(value => (Array.isArray(value) ? from(flattenDeep(value as any).filter(val => !!val)) : of(value))),
         flatMap(
           (key: string | TranslateParam) =>
             typeof key === 'object'
@@ -61,8 +63,6 @@ class TranslationService {
       );
     }
 
-    return of('');
+    return of();
   }
 }
-
-export { TranslationService, TranslateParam };

@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:prod": "ng serve -prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -37,6 +38,7 @@
     "core-js": "^2.5.4",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
+    "normalize.css": "^8.0.0",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
